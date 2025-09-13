@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="description" content="ROMAN's XP-style gamer profile. Twitch, playlists, and more.">
-
   <title>Roman's Profile</title>
   <style>
     body {
@@ -116,6 +115,20 @@
       box-shadow: 0 0 16px #00e676;
       border-color: #00e676 !important;
     }
+
+    #boot-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #003399;
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
   </style>
 
   <script>
@@ -151,10 +164,24 @@
       }
     }
 
-    window.onload = checkTwitchLive;
+    window.onload = () => {
+      checkTwitchLive();
+      setTimeout(() => {
+        document.getElementById("boot-screen").style.display = "none";
+      }, 2500);
+    };
   </script>
 </head>
 <body>
+  <!-- XP Boot Screen -->
+  <div id="boot-screen">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Windows_XP_logo.svg" alt="XP Logo" style="width: 200px; margin-bottom: 20px;">
+    <p style="font-size: 18px;">Starting up...</p>
+    <audio autoplay>
+      <source src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
   <div class="container">
     <aside class="sidebar">
       <img src="mask.png" alt="Profile" class="avatar" />
@@ -182,7 +209,7 @@
 
         <div id="twitch-stream" style="display:none; margin-bottom:10px; border:2px solid #3a6ea5; border-radius:6px;">
           <iframe
-            src="https://player.twitch.tv/?channel=romanparryparty&parent=localhost"
+            src="https://player.twitch.tv/?channel=romanparryparty&parent=romanpartypaarty.github.io"
             allowfullscreen
             frameborder="0"
             height="380"
@@ -192,7 +219,7 @@
 
         <div id="twitch-chat" style="display:none; border:2px solid #3a6ea5; border-radius:6px;">
           <iframe
-            src="https://www.twitch.tv/embed/romanparryparty/chat?parent=localhost"
+            src="https://www.twitch.tv/embed/romanparryparty/chat?parent=romanpartypaarty.github.io"
             frameborder="0"
             height="300"
             width="100%">
